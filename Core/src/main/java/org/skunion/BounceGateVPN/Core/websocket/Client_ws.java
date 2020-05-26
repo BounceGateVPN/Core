@@ -33,8 +33,7 @@ public class Client_ws extends WebSocketClient{
 
 	@Override
 	public void onMessage(String message) {
-		// TODO Auto-generated method stub
-		
+		Log.printMsg("Core", Log.MsgType.info, "Message : " + message);
 	}
 
 	@Override
