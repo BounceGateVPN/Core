@@ -62,13 +62,14 @@ public class Client_ws extends WebSocketClient{
 	@Override
 	public void onClose(int code, String reason, boolean remote) {
 		// TODO Auto-generated method stub
-		
+		Log.printMsg("Core", Log.MsgType.info, "Closing connection.");
 	}
 
 	@Override
 	public void onError(Exception ex) {
 		// TODO Auto-generated method stub
-		
+		Log.printMsg("Core", Log.MsgType.err, "Error.");
+		ex.printStackTrace();
 	}
 	
 	/**
