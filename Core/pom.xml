@@ -46,6 +46,11 @@
 	  <version>2.2</version>
 	</dependency>
 	<dependency>
+      <groupId>com.github.smallru8</groupId>
+      <artifactId>Switch</artifactId>
+      <version>2.0</version>
+    </dependency>
+	<dependency>
       <groupId>org.bouncycastle</groupId>
       <artifactId>bcprov-jdk15on</artifactId>
       <version>1.65</version>

@@ -13,6 +13,7 @@ public class Usr {
 	public static WebSocketClient client;
 	public static Secure sec;
 	
+	
 	public static void initSecureCore() {
 		sec = new Secure();
 	}
