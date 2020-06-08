@@ -13,16 +13,28 @@ import org.java_websocket.client.WebSocketClient;
 import org.java_websocket.handshake.ServerHandshake;
 import org.skunion.BounceGateVPN.Core.Usr.Usr;
 
+import com.github.smallru8.BounceGateVPN.device.Port;
+import com.github.smallru8.BounceGateVPN.device.Port.DeviceType;
 import com.github.smallru8.Secure.LocalUsrData;
 import com.github.smallru8.Secure.Log.Log;
+import com.github.smallru8.driver.tuntap.TapDevice;
 
 public class Client_ws extends WebSocketClient{
 	public boolean readyFlag;
 	public LocalUsrData lud;
+	public Port port; //連接Tap或Switch
+	
 	public Client_ws(URI serverUri,LocalUsrData lud) {
 		super(serverUri);
 		readyFlag = false;
 		this.lud = lud;
+		port = new Port(Usr.td) {
+			
+			
+			public void sendToVirtualDevice(byte[] data) {//送到tap
+				
+			}
+		};
 	}
 
 	@Override
