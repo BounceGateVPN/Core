@@ -15,7 +15,6 @@ public class Server_ws extends WebSocketServer{
 	@Override
 	public void onOpen(WebSocket conn, ClientHandshake handshake) {
 		// TODO Auto-generated method stub
-		
 	}
 
 	@Override
