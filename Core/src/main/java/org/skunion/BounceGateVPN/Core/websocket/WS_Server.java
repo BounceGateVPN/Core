@@ -33,7 +33,7 @@ public class WS_Server extends WebSocketServer{
 	private Timer timer;
 	private ArrayList<Pair<WebSocket,Integer>> waitingQ;
 	
-	private Map<WebSocket,WS_Case> CaseRecord;//conn對應的Case
+	private Map<WebSocket,WS_Case> CaseRecord;//conn對應的Case,註冊switch時用的是WS_Case
 	private Map<WebSocket,SwitchManager> swLs;//conn對應的SwitchManager
 	
 	public WS_Server(InetSocketAddress address) {
