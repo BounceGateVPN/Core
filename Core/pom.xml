@@ -38,7 +38,7 @@
     <dependency>
       <groupId>com.github.smallru8</groupId>
       <artifactId>secure</artifactId>
-      <version>2.0</version>
+      <version>3.2</version>
     </dependency>
     <dependency>
 	  <groupId>com.github.smallru8</groupId>
