@@ -1,3 +1,3 @@
 # Core
 TODO:  
-重作client架構
+測試
