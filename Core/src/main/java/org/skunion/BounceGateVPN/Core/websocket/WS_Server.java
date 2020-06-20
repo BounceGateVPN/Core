@@ -64,6 +64,7 @@ public class WS_Server extends WebSocketServer{
 	
 	@Override
 	public void onOpen(WebSocket conn, ClientHandshake handshake) {
+		Log.printMsg("Core-WS_Server", Log.MsgType.info, "IP : " + conn.getRemoteSocketAddress().getHostString() + ":" + conn.getRemoteSocketAddress().getPort() + " connected.");
 		Pair<WebSocket,Integer> p = new Pair<WebSocket,Integer>();
 		p.makePair(conn, 0);
 		waitingQ.add(p);
@@ -72,7 +73,7 @@ public class WS_Server extends WebSocketServer{
 	@Override
 	public void onClose(WebSocket conn, int code, String reason, boolean remote) {
 		// TODO Auto-generated method stub
-		Log.printMsg("Core-WS_Server", Log.MsgType.info, "Closing connection.");
+		Log.printMsg("Core-WS_Server", Log.MsgType.info,"IP : " + conn.getRemoteSocketAddress().getHostString() + ":" + conn.getRemoteSocketAddress().getPort() + ", closing connection.");
 	}
 
 	@Override
@@ -139,8 +140,8 @@ public class WS_Server extends WebSocketServer{
 	@Override
 	public void onError(WebSocket conn, Exception ex) {
 		// TODO Auto-generated method stub
-		Log.printMsg("Core-WS_Server", Log.MsgType.err, "Error.");
-		ex.printStackTrace();
+		Log.printMsg("Core-WS_Server", Log.MsgType.err, "Error.\n" + ex.toString());
+		//ex.printStackTrace();
 	}
 
 	@Override
