@@ -5,6 +5,7 @@ import java.sql.SQLException;
 
 import com.github.smallru8.BounceGateVPN.Switch.VirtualSwitch;
 import com.github.smallru8.Secure.UserData.ServerData;
+import com.github.smallru8.util.SHA;
 
 /**
  * 1台Switch
@@ -22,12 +23,14 @@ public class SwitchManager {
 
 	private VirtualSwitch vSwitch;
 	private ServerData serverData;
+	public String SHA512_switchName;
 	//private ArrayList<connectUsrData> clientLs;
 	
 	public SwitchManager(String switchName) {
 		vSwitch = new VirtualSwitch();
 		//clientLs = new ArrayList<connectUsrData>();
 		serverData = new ServerData(switchName);
+		SHA512_switchName = SHA.SHA512(switchName);
 	}
 	
 	public void startSwitch() {
