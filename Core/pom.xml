@@ -60,6 +60,16 @@
       <artifactId>bcprov-jdk15on</artifactId>
       <version>1.65</version>
 	</dependency>
+	<dependency>
+      <groupId>org.xerial</groupId>
+      <artifactId>sqlite-jdbc</artifactId>
+      <version>3.31.1</version>
+	</dependency>
+	<dependency>
+      <groupId>mysql</groupId>
+      <artifactId>mysql-connector-java</artifactId>
+      <version>8.0.20</version>
+	</dependency>
   </dependencies>
   
 </project>
