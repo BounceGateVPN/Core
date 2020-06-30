@@ -22,7 +22,7 @@ import com.github.smallru8.util.SHA;
 public class SwitchManager {
 
 	private VirtualSwitch vSwitch;
-	private ServerData serverData;
+	public ServerData serverData;
 	public String SHA512_switchName;
 	//private ArrayList<connectUsrData> clientLs;
 	

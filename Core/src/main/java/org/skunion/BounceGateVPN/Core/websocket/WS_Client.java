@@ -27,6 +27,7 @@ public class WS_Client extends WebSocketClient {
 	
 	public WS_Client(ClientData clientData) throws URISyntaxException {
 		super(new URI(clientData.IPaddr + ":" + clientData.port));
+		this.clientData = clientData;
 		readyFlag = false;
 	}
 
