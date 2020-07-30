@@ -67,7 +67,7 @@ public class WS_Server extends WebSocketServer{
 		Log.printMsg("Core-WS_Server", Log.MsgType.info, "IP : " + conn.getRemoteSocketAddress().getHostString() + ":" + conn.getRemoteSocketAddress().getPort() + " connected.");
 		Pair<WebSocket,Integer> p = new Pair<WebSocket,Integer>();
 		p.makePair(conn, 0);
-		waitingQ.add(p);
+		waitingQ.add(p);//client連入，加入等待清單
 	}
 
 	@Override
@@ -120,12 +120,21 @@ public class WS_Server extends WebSocketServer{
 		if(!CaseRecord.get(conn).readyFlag) {//驗證sessionKey+1
 			removeFromWaitingQ(conn);
 			CaseRecord.get(conn).readyFlag = true;
-			if(verifySessionKeyPlus1(CaseRecord.get(conn).ud.sessionKey,message.array())) {
-				CaseRecord.get(conn).ud.sport = swLs.get(conn).getSwitch().addDevice(CaseRecord.get(conn));//註冊到Switch
-			}else {//沒通過
-				CaseRecord.remove(conn);
-				swLs.remove(conn);
-				conn.close();
+			try {
+				//驗證sessionKey+1
+				if(verifySessionKeyPlus1(CaseRecord.get(conn).ud.sessionKey,CaseRecord.get(conn).ud.decryption_AES(message.array()))) {
+					CaseRecord.get(conn).ud.sport = swLs.get(conn).getSwitch().addDevice(CaseRecord.get(conn));//註冊到Switch
+				}else {//沒通過
+					CaseRecord.remove(conn);
+					swLs.remove(conn);
+					conn.close();
+				}
+			} catch (IllegalBlockSizeException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (BadPaddingException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
 		}else {//一般封包接收
 			try {//送到註冊的Switch

@@ -39,6 +39,8 @@ public class WS_Client extends WebSocketClient {
 		this.sport = port;
 	}
 	
+	//tuntap >> local switch >> WS_Client
+	//給local switch送資料出去
 	@Override
 	public void send(byte[] data) {
 		try {
